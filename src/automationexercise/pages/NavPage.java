@@ -1,11 +1,16 @@
 package automationexercise.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class NavPage extends BasePage {
 
 	
+	protected NavPage(WebDriver driver) {
+		super(driver);
+	}
+
 	public WebElement getHomeLink() {
 		return find(By.xpath("//*[contains(@class, 'container')]//*[contains(text(), 'Home')]"));
 	}
