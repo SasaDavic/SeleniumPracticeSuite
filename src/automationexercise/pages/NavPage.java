@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 public class NavPage extends BasePage {
 
 	
-	protected NavPage(WebDriver driver) {
+	public NavPage(WebDriver driver) {
 		super(driver);
 	}
 
