@@ -15,6 +15,7 @@ import org.testng.annotations.BeforeMethod;
 import automationexercise.pages.NavPage;
 import automationexercise.pages.SignupLoginPage;
 import automationexercise.pages.SignupPage;
+import automationexercise.pages.StatusMessagePage;
 
 public abstract class BaseTests {
 	
@@ -24,7 +25,7 @@ public abstract class BaseTests {
 	protected NavPage navPage;
 	protected SignupLoginPage signupLoginPage;
 	protected SignupPage signupPage;
-	
+	protected StatusMessagePage statusMessagePage;
 		
 	
 
@@ -41,6 +42,7 @@ public abstract class BaseTests {
 		navPage = new NavPage(driver);
 		signupLoginPage = new SignupLoginPage(driver);
 		signupPage = new SignupPage(driver);
+		statusMessagePage = new StatusMessagePage(driver);
 	}
 	
 	@BeforeMethod

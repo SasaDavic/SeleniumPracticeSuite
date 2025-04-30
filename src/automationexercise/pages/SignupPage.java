@@ -101,23 +101,23 @@ public class SignupPage extends BasePage {
 		}
 		
 		public WebElement getFirstNameInput() {
-			return find(By.xpath("/input[@data-qa='first_name']"));
+			return find(By.xpath("//input[@data-qa='first_name']"));
 		}
 	
 		public WebElement getLastNameInput() {
-			return find(By.xpath("/input[@data-qa='last_name']"));
+			return find(By.xpath("//input[@data-qa='last_name']"));
 		}
 		
 		public WebElement getCompanyInput() {
-			return find(By.xpath("/input[@data-qa='company']"));
+			return find(By.xpath("//input[@data-qa='company']"));
 		}
 		
 		public WebElement getAddressInput() {
-			return find(By.xpath("/input[@data-qa='address']"));
+			return find(By.xpath("//input[@data-qa='address']"));
 		}
 		
 		public WebElement getAddress2Input() {
-			return find(By.xpath("/input[@data-qa='address2']"));
+			return find(By.xpath("//input[@data-qa='address2']"));
 		}
 		
 		public WebElement getCountrySelect() {

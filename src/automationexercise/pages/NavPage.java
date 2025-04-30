@@ -3,6 +3,7 @@ package automationexercise.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class NavPage extends BasePage {
 
@@ -43,4 +44,12 @@ public class NavPage extends BasePage {
 		return find(By.xpath("//*[contains(@class, 'container')]//*[contains(text(), 'Contact us')]"));
 	}
 	
+	public void waitUntilLoggedInIsVisible() {
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By
+				.xpath("//ul[contains(@class, 'nav')]//*[contains(text(), 'Logged in as')]")));
+	}
+	
+	public WebElement getDeleteAccountLink() {
+		return find(By.xpath("//ul[contains(@class, 'nav')]//*[contains(text(), ' Delete Account')]"));
+	}
 }
