@@ -25,7 +25,7 @@ public class NavPage extends BasePage {
 	}
 	
 	public WebElement getSignupLoginLink() {
-		return find(By.xpath("//*[contains(@class, 'container')]//*[contains(text(), 'Signup / Login')]"));
+		return find(By.xpath("//*[contains(@class, 'container')]//*[contains(text(), 'Signup')]"));
 	}
 	
 	public WebElement getTestCasesLink() {

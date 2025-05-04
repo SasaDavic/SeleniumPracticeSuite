@@ -32,9 +32,33 @@ public class SignupLoginPage extends BasePage {
 		getSignupButton().click();
 	}
 	
+	//login forma
+	
+	public WebElement getLoginEmailInput() {
+		return find(By.xpath("//input[@data-qa = 'login-email']"));
+	}
+	
+	public WebElement getLoginPasswordInput() {
+		return find(By.xpath("//input[@data-qa = 'login-password']"));
+	}
+	
+	public WebElement getLoginButton() {
+		return find(By.xpath("//*[@data-qa = 'login-button']"));
+	}
+	
+	public void loginUser(String email, String pass) {
+		getLoginEmailInput().sendKeys(email);
+		getLoginPasswordInput().sendKeys(pass);
+		getLoginButton().click();
+	}
+	
 	//cekanje za formu na zajednickoj stranici za login i signup
 		public void waitForSignUpButtonToBeClickable() {
 			wait.until(ExpectedConditions.elementToBeClickable(this.getSignupButton()));
+		}
+		
+		public void waitForLoginButtonToBeClickable() {
+			wait.until(ExpectedConditions.elementToBeClickable(this.getLoginButton()));
 		}
 		
 	

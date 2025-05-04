@@ -12,7 +12,7 @@ import automationexercise.pages.SignupPage;
 
 public class UserTests extends BaseTests {
 	
-	@Test
+	@Test (priority = 10)
 	public void registerUser() {
 		navPage.waitForPageToLoad();
 		assertCurrentUrl("https://www.automationexercise.com/");
@@ -35,7 +35,7 @@ public class UserTests extends BaseTests {
 		Assert.assertTrue(signupLoginPage.getSignupButton().isEnabled(), 
 				"Signup signup button is not enabled");
 		signupLoginPage.waitForSignUpButtonToBeClickable();
-		signupLoginPage.registerNewUser("Sasa", "sasa1@mail.com");
+		signupLoginPage.registerNewUser("Sasa", "sasaZ@mail.com");
 		
 		signupLoginPage.waitForPageToLoad();
 		assertCurrentUrl("https://www.automationexercise.com/signup");
@@ -72,6 +72,9 @@ public class UserTests extends BaseTests {
 				+ "Actual message is: " + statusMessagePage.getHeaderMessageAccountCreated());
 		statusMessagePage.getContinueButton().click();
 		navPage.waitUntilLoggedInIsVisible();
+		
+	//ne brisemo nalog, ukoliko podatke koristimo za logovanje u narednom testu
+		/*
 		navPage.getDeleteAccountLink().click();
 		statusMessagePage.waitForPageToLoad();
 		assertCurrentUrl("https://www.automationexercise.com/delete_account");
@@ -81,9 +84,48 @@ public class UserTests extends BaseTests {
 				+ "Actual message is: " + statusMessagePage.getHeaderMessageAccountDeleted());
 		statusMessagePage.getContinueButton().click();
 		assertCurrentUrl("https://www.automationexercise.com/");
+		*/
+	}
 	
-	
-	
+	@Test (priority = 20)
+	public void loginUserWithCorrectEmailAndPassword() {
+		
+		assertCurrentUrl("https://www.automationexercise.com/");
+		navPage.getSignupLoginLink().click();
+		signupLoginPage.waitForPageToLoad();
+		assertCurrentUrl("https://www.automationexercise.com/login");
+		
+		Assert.assertEquals(driver.findElement(By.className("login-form")).findElement(By.tagName("h2")).getText(),
+				"Login to your account",
+				"Message is not as expected!");
+		
+		Assert.assertTrue(signupLoginPage.getLoginEmailInput().isDisplayed(), 
+				"Email input is no displayed!");
+		Assert.assertTrue(signupLoginPage.getLoginEmailInput().isEnabled(), 
+				"Email is not enabled!");
+		Assert.assertTrue(signupLoginPage.getLoginPasswordInput().isDisplayed(), 
+				"Password input is no displayed!");
+		Assert.assertTrue(signupLoginPage.getLoginPasswordInput().isEnabled(), 
+				"Passeord input is not enabled!");
+		Assert.assertTrue(signupLoginPage.getLoginButton().isEnabled(), 
+				"Login button is not enabled!");
+		
+		signupLoginPage.loginUser("sasaZ@mail.com", "0123456");
+		navPage.waitForPageToLoad();
+		navPage.waitUntilLoggedInIsVisible();
+		navPage.getDeleteAccountLink().click();
+		
+		assertCurrentUrl("https://www.automationexercise.com/delete_account");
+		statusMessagePage.waitForPageToLoad();
+		statusMessagePage.waitForMessageToLoad();
+		Assert.assertTrue(statusMessagePage.getHeaderMessageAccountDeleted().equalsIgnoreCase("Account Deleted!"), 
+				"Message is not as expected! Actual message is: " + statusMessagePage.getHeaderMessageAccountDeleted());
+		Assert.assertTrue(statusMessagePage.getContinueButton().isEnabled(), 
+				"Button is not enabled!");
+		statusMessagePage.getContinueButton().click();
+		navPage.waitForPageToLoad();
+		assertCurrentUrl("https://www.automationexercise.com/");
+		
 	}
 
 }
