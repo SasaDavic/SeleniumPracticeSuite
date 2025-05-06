@@ -25,7 +25,11 @@ public class NavPage extends BasePage {
 	}
 	
 	public WebElement getSignupLoginLink() {
-		return find(By.xpath("//*[contains(@class, 'container')]//*[contains(text(), 'Signup')]"));
+		return find(By.xpath("//*[contains(@class, 'navbar-nav')]//a[contains(@href, 'login')]"));
+	}
+	
+	public WebElement getLogoutLink() {
+		return find(By.xpath("//*[contains(@class, 'navbar-nav')]//a[contains(@href, 'logout')]"));
 	}
 	
 	public WebElement getTestCasesLink() {
@@ -45,7 +49,12 @@ public class NavPage extends BasePage {
 	}
 	
 	public void waitUntilLoggedInIsVisible() {
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By
+				.xpath("//ul[contains(@class, 'nav')]//*[contains(text(), 'Logged in as')]")));
+	}
+	
+	public void waitUntilLoggedInIsNotVisible() {
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By
 				.xpath("//ul[contains(@class, 'nav')]//*[contains(text(), 'Logged in as')]")));
 	}
 	

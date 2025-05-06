@@ -1,9 +1,12 @@
 package automationexercise.tests;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -22,6 +25,7 @@ public abstract class BaseTests {
 	protected WebDriver driver;
 	protected WebDriverWait wait;
 	protected String baseUrl = "https://www.automationexercise.com";
+	
 	protected NavPage navPage;
 	protected SignupLoginPage signupLoginPage;
 	protected SignupPage signupPage;
@@ -32,13 +36,17 @@ public abstract class BaseTests {
 	@BeforeClass
 	public void setup() {
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-		driver = new ChromeDriver();
-		
+	    driver = new ChromeDriver();
+
+	    driver.manage().window().maximize();
+	  
+	 // Vremenski okviri
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		
+		// Inicijalizacija stranica
 		navPage = new NavPage(driver);
 		signupLoginPage = new SignupLoginPage(driver);
 		signupPage = new SignupPage(driver);

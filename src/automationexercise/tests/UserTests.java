@@ -35,7 +35,7 @@ public class UserTests extends BaseTests {
 		Assert.assertTrue(signupLoginPage.getSignupButton().isEnabled(), 
 				"Signup signup button is not enabled");
 		signupLoginPage.waitForSignUpButtonToBeClickable();
-		signupLoginPage.registerNewUser("Sasa", "sasaZ@mail.com");
+		signupLoginPage.registerNewUser("Sasa", "sasa@mail.com");
 		
 		signupLoginPage.waitForPageToLoad();
 		assertCurrentUrl("https://www.automationexercise.com/signup");
@@ -43,6 +43,7 @@ public class UserTests extends BaseTests {
 		
 		signupPage.selectFemale();
 		assertTrue(signupPage.isFemaleSelected(), "Mrs. is not selected!");
+		signupPage.getNameInput().clear();
 		signupPage.getNameInput().sendKeys("Sasa");
 		assertFalse(signupPage.getEmailInput().isEnabled(), "Email input is enabled!");
 		signupPage.getPasswordInput().sendKeys("0123456");
@@ -85,6 +86,8 @@ public class UserTests extends BaseTests {
 		statusMessagePage.getContinueButton().click();
 		assertCurrentUrl("https://www.automationexercise.com/");
 		*/
+		navPage.getLogoutLink().click();
+		navPage.waitUntilLoggedInIsNotVisible();
 	}
 	
 	@Test (priority = 20)
