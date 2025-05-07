@@ -61,7 +61,11 @@ public class SignupLoginPage extends BasePage {
 			wait.until(ExpectedConditions.elementToBeClickable(this.getLoginButton()));
 		}
 		
-	
+	//greske za pogresan unos podataka
+		
+		public String getLoginErrorMessage() {
+			return find(By.xpath("//form[contains(@action, '/login')]/p")).getText();
+		}
 	
 	
 	

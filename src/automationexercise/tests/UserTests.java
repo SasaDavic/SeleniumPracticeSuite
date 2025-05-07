@@ -113,7 +113,7 @@ public class UserTests extends BaseTests {
 		Assert.assertTrue(signupLoginPage.getLoginButton().isEnabled(), 
 				"Login button is not enabled!");
 		
-		signupLoginPage.loginUser("sasaZ@mail.com", "0123456");
+		signupLoginPage.loginUser("sasa@mail.com", "0123456");
 		navPage.waitForPageToLoad();
 		navPage.waitUntilLoggedInIsVisible();
 		navPage.getDeleteAccountLink().click();
@@ -128,6 +128,23 @@ public class UserTests extends BaseTests {
 		statusMessagePage.getContinueButton().click();
 		navPage.waitForPageToLoad();
 		assertCurrentUrl("https://www.automationexercise.com/");
+		
+	}
+	
+	
+	@Test (priority = 30)
+	public void loginUserWithIncorrectEmailAndPassword() { 
+		assertCurrentUrl("https://www.automationexercise.com/");
+		navPage.waitForPageToLoad();
+		navPage.getSignupLoginLink().click();
+		assertCurrentUrl("https://www.automationexercise.com/login");
+		signupLoginPage.waitForPageToLoad();
+		signupLoginPage.waitForLoginButtonToBeClickable();
+		signupLoginPage.loginUser("sasa@mail.com", "0123456");
+		
+		Assert.assertEquals(signupLoginPage.getLoginErrorMessage(), 
+				"Your email or password is incorrect!",
+				"Login error message is not as expected!");
 		
 	}
 
