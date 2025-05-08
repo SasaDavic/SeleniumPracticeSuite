@@ -90,6 +90,22 @@ public class UserTests extends BaseTests {
 		navPage.waitUntilLoggedInIsNotVisible();
 	}
 	
+	@Test (priority = 15)
+	public void logoutUser() {
+		assertCurrentUrl("https://www.automationexercise.com/");
+		navPage.getSignupLoginLink().click();
+		assertCurrentUrl("https://www.automationexercise.com/login");
+		signupLoginPage.waitForPageToLoad();
+		signupLoginPage.waitForLoginButtonToBeClickable();
+		signupLoginPage.loginUser("sasa@mail.com", "0123456");
+		assertCurrentUrl("https://www.automationexercise.com/");
+		navPage.waitForPageToLoad();
+		navPage.waitUntilLoggedInIsVisible();
+		navPage.getLogoutLink().click();
+		navPage.waitUntilLoggedInIsNotVisible();
+		
+	}
+	
 	@Test (priority = 20)
 	public void loginUserWithCorrectEmailAndPassword() {
 		
