@@ -12,7 +12,7 @@ import automationexercise.pages.SignupPage;
 
 public class UserTests extends BaseTests {
 	
-	@Test (priority = 10)
+	//@Test (priority = 10)
 	public void registerUser() {
 		navPage.waitForPageToLoad();
 		assertCurrentUrl("https://www.automationexercise.com/");
@@ -90,7 +90,7 @@ public class UserTests extends BaseTests {
 		navPage.waitUntilLoggedInIsNotVisible();
 	}
 	
-	@Test (priority = 15)
+	//@Test (priority = 20)
 	public void logoutUser() {
 		assertCurrentUrl("https://www.automationexercise.com/");
 		navPage.getSignupLoginLink().click();
@@ -106,7 +106,22 @@ public class UserTests extends BaseTests {
 		
 	}
 	
-	@Test (priority = 20)
+	@Test (priority = 30)
+	public void registerUserWithExistingEmail() {
+		
+		assertCurrentUrl("https://www.automationexercise.com/");
+		navPage.getSignupLoginLink().click();
+		signupLoginPage.waitForPageToLoad();
+		assertCurrentUrl("https://www.automationexercise.com/login");
+		signupLoginPage.waitForSignUpButtonToBeClickable();
+		signupLoginPage.registerNewUser("sasa", "sasa@mail.com");
+		
+		Assert.assertEquals(signupLoginPage.getSignupErrorMessage(), 
+				"Email Address already exist!", 
+				"Error message is not as expected!");
+	}
+	
+	//@Test (priority = 40)
 	public void loginUserWithCorrectEmailAndPassword() {
 		
 		assertCurrentUrl("https://www.automationexercise.com/");
@@ -148,7 +163,7 @@ public class UserTests extends BaseTests {
 	}
 	
 	
-	@Test (priority = 30)
+	//@Test (priority = 50)
 	public void loginUserWithIncorrectEmailAndPassword() { 
 		assertCurrentUrl("https://www.automationexercise.com/");
 		navPage.waitForPageToLoad();

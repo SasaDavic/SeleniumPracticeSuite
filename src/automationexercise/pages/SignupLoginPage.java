@@ -67,7 +67,9 @@ public class SignupLoginPage extends BasePage {
 			return find(By.xpath("//form[contains(@action, '/login')]/p")).getText();
 		}
 	
-	
+		public String getSignupErrorMessage() {
+			return find(By.xpath("//form[contains(@action, '/signup')]/p")).getText();
+		}
 	
 	
 	
