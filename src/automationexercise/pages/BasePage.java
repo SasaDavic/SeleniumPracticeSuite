@@ -2,7 +2,9 @@ package automationexercise.pages;
 
 import java.time.Duration;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -44,5 +46,16 @@ public abstract class BasePage {
 	        "Copyright © 2021 All rights reserved"
 	    ));
 				
+	}
+	
+	public void handleAlertIfPresent() {
+	    try {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+	        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+	        System.out.println("Alert detected: " + alert.getText());
+	        alert.accept();
+	    } catch (TimeoutException e) {
+	        System.out.println("No alert present.");
+	    }
 	}
 }

@@ -12,7 +12,7 @@ import automationexercise.pages.SignupPage;
 
 public class UserTests extends BaseTests {
 	
-	//@Test (priority = 10)
+	@Test (priority = 10)
 	public void registerUser() {
 		navPage.waitForPageToLoad();
 		assertCurrentUrl("https://www.automationexercise.com/");
@@ -90,7 +90,7 @@ public class UserTests extends BaseTests {
 		navPage.waitUntilLoggedInIsNotVisible();
 	}
 	
-	//@Test (priority = 20)
+	@Test (priority = 20)
 	public void logoutUser() {
 		assertCurrentUrl("https://www.automationexercise.com/");
 		navPage.getSignupLoginLink().click();
@@ -121,7 +121,7 @@ public class UserTests extends BaseTests {
 				"Error message is not as expected!");
 	}
 	
-	//@Test (priority = 40)
+	@Test (priority = 40)
 	public void loginUserWithCorrectEmailAndPassword() {
 		
 		assertCurrentUrl("https://www.automationexercise.com/");
@@ -163,7 +163,7 @@ public class UserTests extends BaseTests {
 	}
 	
 	
-	//@Test (priority = 50)
+	@Test (priority = 50)
 	public void loginUserWithIncorrectEmailAndPassword() { 
 		assertCurrentUrl("https://www.automationexercise.com/");
 		navPage.waitForPageToLoad();
