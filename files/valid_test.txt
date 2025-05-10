@@ -1,0 +1,4 @@
+Test File for Upload Button Functionality
+
+This file is used for verifying that the file upload feature in the application works correctly.
+It contains sample content to simulate a typical file upload scenario during automated testing.
