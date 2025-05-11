@@ -20,6 +20,7 @@ import automationexercise.pages.NavPage;
 import automationexercise.pages.SignupLoginPage;
 import automationexercise.pages.SignupPage;
 import automationexercise.pages.StatusMessagePage;
+import automationexercise.pages.TestCasesPage;
 
 public abstract class BaseTests {
 	
@@ -32,6 +33,7 @@ public abstract class BaseTests {
 	protected SignupPage signupPage;
 	protected StatusMessagePage statusMessagePage;
 	protected ContactUsPage contactUsPage;
+	protected TestCasesPage testCasesPage;
 		
 	
 
@@ -54,6 +56,7 @@ public abstract class BaseTests {
 		signupPage = new SignupPage(driver);
 		statusMessagePage = new StatusMessagePage(driver);
 		contactUsPage = new ContactUsPage(driver);
+		testCasesPage = new TestCasesPage(driver);
 	}
 	
 	@BeforeMethod
