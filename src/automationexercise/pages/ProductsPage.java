@@ -14,6 +14,14 @@ public class ProductsPage extends BasePage {
 		return find(By.id("search_product"));
 	}
 	
+	public WebElement getSearchButton() {
+		return find(By.id("submit_search"));
+	}
+	
+	public String getTitleText() {
+		return find(By.xpath("//h2[contains(@class, 'title')]")).getText();
+	}
+	
 	public WebElement getViewProductLink (int productNumber) {
 		return find(By
 				.xpath("//*[contains(@class, 'features_items')]/div[contains(@class, 'col-sm-4')]['" + productNumber + "']//li/a"));
